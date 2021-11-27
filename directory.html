@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>${title}</title>
+		<script src="${fontAwesomeKitURL}" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="/styles.css" />
+	</head>
+	<body>
+		<h1>${name}</h1>
+
+		<!-- Navigation Options -->
+		<p>
+			% if has_parent:
+			<a class="nav" style="margin-right: 2%;" href="..">
+				<i class="fas fa-arrow-up"></i>
+				Up
+			</a>
+			% else:
+			<a class="nav inactive" style="margin-right: 2%;">
+				<i class="fas fa-arrow-up inactive"></i>
+				Up
+			</a>
+			% endif
+
+			% if prev_sibling != '':
+			<a class="nav" href="${prev_sibling}">
+				<i class="fas fa-arrow-left"></i>
+				Prev
+			</a>
+			% else:
+			<a class="nav inactive">
+				<i class="fas fa-arrow-left inactive"></i>
+				Prev
+			</a>
+			% endif
+
+			% if next_sibling != '':
+			<a class="nav" href="${next_sibling}">
+				Next
+				<i class="fas fa-arrow-right"></i>
+			</a>
+			% else:
+			<a class="nav inactive">
+				Next
+				<i class="fas fa-arrow-right inactive"></i>
+			</a>
+			% endif
+		</p>
+
+		<!-- Main directory / file listing -->
+		<table order="">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Size</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				% for file in filter(lambda x: x['is_dir'], files):
+				<tr>
+					<td>
+						<a href="${file['url']}">
+							<i class="fas fa-folder"></i>
+							${file['name']}
+						</a>
+					</td>
+					<td class="size">${file['size']}</td>
+					<td><!-- Allow downloading of entire folder if an archive of it exists -->
+						% if file['archive']:
+						<a href="${file['archive']}" download title="Download Archive">
+							<i class="fas fa-download"></i>
+						</a>
+						% endif
+					</td>
+				</tr>
+				% endfor
+
+				% for file in filter(lambda x: not x['is_dir'] and x['is_video'], files):
+				<tr>
+					<td>
+						<a href="${file['url']}">
+							<i class="fas fa-play-circle"></i>
+							${file['name']}
+						</a>
+					</td>
+					<td class="size">${file['size']}</td>
+					<td><!-- Allow downloading of files -->
+						<a href="${file['url']}" download title="Download">
+							<i class="fas fa-download"></i>
+						</a>
+					</td>
+				</tr>
+				% endfor
+
+			<tbody>
+
+			<tfoot><!-- Footer for extra information -->
+				<tr><td colspan="3"><hr/></td></tr>
+				<tr>
+					<td>Total:</td>
+					<td class="size">${total_size}</td>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+</html>

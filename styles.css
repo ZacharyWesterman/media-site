@@ -1,0 +1,119 @@
+:root {
+	background-color: #252422;
+	color: #CCC5B9;
+	font: message-box;
+	padding-inline: 2em;
+}
+
+body {
+	border: 2px solid #CCC5B9;
+	border-radius: 10px;
+	padding: 3em;
+	min-width: 30em;
+	max-width: 65em;
+	margin: 4em auto;
+	background-color: #403D39;
+	color: #FFFCF2;
+}
+
+h1 {
+	font-size: 3vh;
+	margin: 0 0 .6em;
+	border-bottom: 1px solid #FFFCF2;
+	font-weight: normal;
+}
+
+td a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+td {
+	font-size: 2vh;
+}
+
+th {
+	font-size: 2vh;
+}
+
+.footer {
+	border-top: 1px solid ThreeDLightShadow;
+}
+
+.size {
+	text-align: right;
+}
+
+a {
+	text-decoration: none;
+	color: #FFFCF2;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+i {
+	color: #C0A028;
+}
+
+p {
+	font-size: 2vh;
+}
+
+#UI_goUp {
+	margin-top: 0;
+	float: inline-start;
+}
+
+#UI_showHidden {
+	margin-top: 0;
+	float: inline-end;
+}
+
+table {
+	clear: both;
+	width: 90%;
+	margin: 0 auto;
+}
+
+thead {
+	font-size: 130%;
+}
+
+/* last modified */
+th {
+	text-align: left;
+}
+
+th:hover > a {
+	text-decoration: underline;
+}
+
+body > table > tbody > tr:hover {
+	outline: 1px solid ThreeDLightShadow;
+}
+
+body > table > tfoot {
+	text-align: right;
+}
+
+/* let 'Size' and 'Last Modified' take only as much space as they need and 'Name' all the rest */
+td:not(:first-child) {
+	width: 0;
+}
+
+.nav {
+	padding: 0 .5em;
+	margin-inline-start: 20px;
+}
+
+.nav::before {
+	margin-inline: -20px 4px;
+	vertical-align: middle;
+}
+
+.inactive {
+	color: gray;
+}
