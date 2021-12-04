@@ -82,7 +82,7 @@
 					<td>
 						<a href="${file['url']}">
 							<i class="fas fa-play-circle"></i>
-							${file['name']}
+							${file['name'].rsplit('.',1)[0]}
 						</a>
 					</td>
 					<td class="size">${file['size']}</td>
